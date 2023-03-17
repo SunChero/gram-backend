@@ -1,0 +1,64 @@
+###list all streams
+GET http://localhost:8080/streams/list
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InN1biJ9.-JWSsBmCcYvxdPhsSTG4IN6cuxoCGHA-XPKVr-7MWDc
+
+
+
+### delete stream
+DELETE http://localhost:8080/streams/sun
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InN1biJ9.-JWSsBmCcYvxdPhsSTG4IN6cuxoCGHA-XPKVr-7MWDc
+
+
+### create stream
+POST  http://localhost:8080/streams
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InN1biJ9.-JWSsBmCcYvxdPhsSTG4IN6cuxoCGHA-XPKVr-7MWDc
+
+{
+    "name": "general",
+    "subjects": ["general.public"],
+    "description": "Sample stream",
+	"retention": "limits",
+    "allow_direct":false,
+	"mirror_direct":false
+}
+###
+PATCH  http://localhost:8080/streams
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InN1biJ9.-JWSsBmCcYvxdPhsSTG4IN6cuxoCGHA-XPKVr-7MWDc
+{
+    "name": "general",
+    "subjects": ["general.public"],
+    "description": "Sample stream",
+	"retention": "limits",
+    "allow_direct":false,
+	"mirror_direct":false
+}
+
+
+
+
+
+###
+GET http://localhost:8080/streams/join/general
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InN1biJ9.-JWSsBmCcYvxdPhsSTG4IN6cuxoCGHA-XPKVr-7MWDc
+
+
+###
+GET http://localhost:8080/streams/leave/general
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InN1biJ9.-JWSsBmCcYvxdPhsSTG4IN6cuxoCGHA-XPKVr-7MWDc
+
+
+###
+DELETE http://localhost:8080/consumers
+Content-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InN1biJ9.-JWSsBmCcYvxdPhsSTG4IN6cuxoCGHA-XPKVr-7MWDc
+
+{
+    "stream": "general",
+    "consumer": "tata"
+}
