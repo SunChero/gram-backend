@@ -91,3 +91,9 @@ jobs:
       config-file: .slsa-goreleaser/${{matrix.os}}-${{matrix.arch}}.yml
       compile-builder: true
       evaluated-envs: "COMMIT_DATE:${{needs.args.outputs.commit-date}}, COMMIT:${{needs.args.outputs.commit}}, VERSION:${{needs.args.outputs.version}}, TREE_STATE:${{needs.args.outputs.tree-state}}"
+      base64-subjects: "${{ needs.build.outputs.digests }}"
+      upload-assets: true # Optional: Upload to a new release
+      subjects: |
+          - type: sha256
+            value: "${{ secrets.SHA256_HASH }}"
+            algorithm: sha-256
