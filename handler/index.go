@@ -19,6 +19,7 @@ type Handler struct {
 
 func (h *Handler) New() http.Handler {
 	router := mux.NewRouter()
+	router.PathPrefix("/app/").Handler(http.FileServer(http.Dir("app")))
 
 	AuthRouter := router.PathPrefix("/streams").Subrouter()
 	AuthRouter.Use(JWTMiddleware)
